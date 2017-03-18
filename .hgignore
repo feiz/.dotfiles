@@ -1,0 +1,19 @@
+syntax: glob
+*.pyc
+*.swp
+*.swo
+*.orig
+*.bak
+*.jar
+*.class
+*.scr
+*.DS_STORE
+*.sp
+*.tmp
+.project
+.pydevproject
+.settings
+.classpath
+.DS_Store
+.vim/.netrwhist*
+.vim/bundle/

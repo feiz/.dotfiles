@@ -1,0 +1,44 @@
+[alias]
+activebranches = branches -a
+ab = branches -a
+b = branch
+close = ci --close-branch
+mp = merge pbh
+
+[ui]
+username = kenta azuma
+editor = vim
+fallbackencoding = UTF-8
+merge = vimdiff
+
+[web]
+style=monoblue
+
+[extensions]
+hgext.mq = 
+transplant =
+graphlog = 
+hgext.fetch = 
+hgext.pager =
+color =
+hgext.purge = 
+mercurial_keyring =
+shelve =
+rebase =
+
+[revsetalias]
+parentbranchhead = limit(reverse(branch((branch(.)^) - branch(.))), 1)
+pbh = parentbranchhead
+
+[pager]
+pager = less
+quiet = True
+
+[color]
+status.modified = cyan bold underline
+status.removed = red bold
+status.deleted = white bold red_background
+status.ignored = black bold white_background
+
+[hostfingerprints]
+bitbucket.org=3f:d3:c5:17:23:3c:cd:f5:2d:17:76:06:93:7e:ee:97:42:21:14:aa
