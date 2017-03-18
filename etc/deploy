@@ -1,0 +1,61 @@
+#!/bin/sh
+WD=`pwd`
+trap 'cd $WD' EXIT
+
+# 設置パス
+SETUPPATH=($(cd $(dirname "${0}") && pwd))
+. $SETUPPATH/environments
+
+# 除外ファイル
+EXCLUDES=(
+  "\.gitignore"
+  "\.git"
+  "etc"
+  "environments"
+)
+# ディレクトリ自体は実体として作成し、1階層奥をリンクにする
+SUBDIRS=(
+  "\.config"
+  "bin"
+)
+
+# linkを張る
+make_link() {
+  ln -sfvn $DOTFILES/$2$1 $DOT/$2$1
+}
+
+# 1段目に実ディレクトリを掘り、２段目にlinkを張る
+make_subdir_links() {
+  mkdir -p $DOT/$1
+  for subfile in `ls -A $1`
+  do
+    make_link $subfile $1/
+  done
+}
+
+# パターンマッチ(完全一致)
+is_match() {
+  filename=$1
+  shift 1
+  patterns=$*
+  for ptn in $patterns;
+  do
+    if expr $filename : "^"$ptn"$" > /dev/null; then return 0; fi
+  done
+  return 1
+}
+
+cd $DOTFILES
+
+for file in `ls -A`;
+do
+  # 除外ファイル
+  if is_match $file ${EXCLUDES[@]}; then continue; fi
+  # 1階層下をリンク
+  if is_match $file ${SUBDIRS[@]};
+  then
+    make_subdir_links $file
+  else
+    make_link $file
+  fi
+done

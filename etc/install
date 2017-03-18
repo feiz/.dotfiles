@@ -1,57 +1,13 @@
 #!/bin/sh
-PWD=`pwd`
-trap 'cd $PWD' EXIT
+DOT=${1:-~}
+DOTFILES=$DOT/.dotfiles
 
-DOTDIR=~/.dotfiles
-TARGET=~/dottest
+cd $DOT
+git clone ssh://git@github.com/feiz/.dotfiles.git && true
 
-# 除外ファイル
-EXCLUDES=(
-  "\.gitignore"
-  "\.git"
-  "etc"
-)
-# ディレクトリ自体は実体として作成し、1階層奥をリンクにする
-SUBDIRS=(
-  "\.config"
-  "bin"
-)
+cat - > $DOTFILES/etc/environments << ENVFILE
+DOT=$DOT
+DOTFILES=$DOTFILES
+ENVFILE
 
-make_link() {
-  ln -sfvn $DOTDIR/$2$1 $TARGET/$2$1
-}
-
-make_subdir_links() {
-  mkdir -p $TARGET/$1
-  for subfile in `ls -A $1`
-  do
-    make_link $subfile $1/
-  done
-}
-
-is_match() {
-  filename=$1
-  shift 1
-  patterns=$*
-  for ptn in $patterns;
-  do
-    if expr $filename : "^"$ptn"$" > /dev/null; then return 0; fi
-  done
-  return 1
-}
-
-cd $DOTDIR
-
-for file in `ls -A`;
-do
-  # 除外ファイル
-  if is_match $file ${EXCLUDES[@]}; then continue; fi
-  # 1階層下をリンク
-  if is_match $file ${SUBDIRS[@]};
-  then
-    make_subdir_links $file
-  else
-
-      make_link $file
-  fi
-done
+$DOTFILES/etc/deploy
