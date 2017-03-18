@@ -12,6 +12,7 @@ EXCLUDES=(
   "\.git"
   "etc"
   "environments"
+  "README.md"
 )
 # ディレクトリ自体は実体として作成し、1階層奥をリンクにする
 SUBDIRS=(

@@ -2,3 +2,5 @@
 ######################
 .vim/bundle/
 etc/environments
+
+*.sw[op]
