@@ -15,8 +15,8 @@ filetype indent on
 " ディレクトリ関連
 """"""""""""""""""""""""
 
-"set backupdir=$HOME/tmp,. " バックアップファイル
-"set directory=$HOME/tmp,. " スワップファイル
+set backupdir=/tmp,. " バックアップファイル
+set directory=/tmp,. " スワップファイル
 set noesckeys "インサートモードでESCが即座に利くようにする
 "set timeoutlen=200 " キー入力タイムアウト
 let g:MRU_File = $HOME . "/tmp/.vim_mru_files"
@@ -150,7 +150,7 @@ autocmd! greps
 
 function! SilentGrep(args)
     " grepしたあとでredrawを叩く関数
-    execute "silent! grep! -rI " . a:args
+    execute "silent! grep! -rI --exclude-dir node_modules " . a:args
     redraw!
     endfunction
 " 関数呼び出しのカッコを端折るためにコマンドとして定義
@@ -233,7 +233,7 @@ set clipboard=unnamed " クリップボードにコピー
 set tags=~/.tags " タグディレクトリ
 
 " neocomplcache
-let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_at_startup = 0
 
 " wildmenu
 set wildmenu
@@ -259,6 +259,9 @@ nmap <C-n> <Plug>(yankround-next)
 
 " Khuno
 let g:khuno_ignore = "E501"
+
+" emmet.vim
+let g:user_emmet_leader_key='<C-E>'
 
 " 入力モードでの行頭行末移動
 inoremap <C-e> <End>
