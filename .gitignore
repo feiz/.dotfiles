@@ -1,6 +1,8 @@
 # All #
 ######################
 .vim/bundle/
+.config/nvim/plugin/
+.config/nvim/.netrwhist
 etc/environments
 
 *.sw[op]
