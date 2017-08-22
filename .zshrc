@@ -9,6 +9,7 @@ export TERM=xterm-256color
 # set PATH so it includes user's private bin if it exists
 [ -f "$HOME/.zshpathes" ] && source $HOME/.zshpathes
 [ -d "$HOME/bin" ] && export PATH=$PATH:$HOME/bin
+eval "$(direnv hook zsh)"
 
 #virtualenv
 if [ -f "/usr/local/bin/virtualenvwrapper.sh" ];then
@@ -59,7 +60,7 @@ alias dk='docker'
 alias dkm='docker-machine'
 alias dks='docker-swarm'
 alias dkc='docker-compose'
-alias dkc='TAG=local docker-compose -f docker-compose-local.yml'
+alias dkc='docker-compose -f docker-compose-local.yml'
 export LESS="FSRX"
 
 #prompt
