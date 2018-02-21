@@ -11,13 +11,6 @@ export TERM=xterm-256color
 [ -d "$HOME/bin" ] && export PATH=$PATH:$HOME/bin
 eval "$(direnv hook zsh)"
 
-#virtualenv
-if [ -f "/usr/local/bin/virtualenvwrapper.sh" ];then
-    export WORKON_HOME=$HOME/.virtualenvs
-    source /usr/local/bin/virtualenvwrapper.sh
-fi
-export PIP_RESPECT_VIRTUALENV=true
-
 #editor
 export EDITOR=vim
 
