@@ -6,6 +6,7 @@ source ~/.bundle.vim
 
 set encoding=utf-8  " エンコーディング
 set t_Co=256 " 256色ターミナル
+set belloff=all
 
 filetype plugin on
 filetype indent on
@@ -20,7 +21,6 @@ set directory=/tmp,. " スワップファイル
 set noesckeys "インサートモードでESCが即座に利くようにする
 "set timeoutlen=200 " キー入力タイムアウト
 let g:MRU_File = $HOME . "/tmp/.vim_mru_files"
-
 
 """"""""""""""""""""""""
 " 色と見た目
