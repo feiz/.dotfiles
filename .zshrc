@@ -127,7 +127,7 @@ bindkey "^N" history-beginning-search-forward-end
 zstyle :compinstall filename '/home/feiz/.zshrc'
 zstyle ':completion:*' list-colors ''
 
-setopt beep extendedglob notify
+setopt no_beep
 
 #autocomplete
 autoload -Uz compinit
