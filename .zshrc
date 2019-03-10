@@ -9,7 +9,7 @@ export TERM=xterm-256color
 # set PATH so it includes user's private bin if it exists
 [ -f "$HOME/.zshpathes" ] && source $HOME/.zshpathes
 [ -d "$HOME/bin" ] && export PATH=$PATH:$HOME/bin
-[ -f "$HOME/.nvm" ] && source $HOME/.nvm/nvm.sh
+[ -d "$HOME/.nvm" ] && source $HOME/.nvm/nvm.sh
 eval "$(direnv hook zsh)"
 
 #editor
