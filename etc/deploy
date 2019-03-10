@@ -3,7 +3,7 @@ WD=`pwd`
 trap 'cd $WD' EXIT
 
 # 設置パス
-SETUPPATH=($(cd $(dirname "${0}") && pwd))
+SETUPPATH=$(cd $(dirname "${0}") && pwd)
 . $SETUPPATH/environments
 
 # 除外ファイル
