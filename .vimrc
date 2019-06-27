@@ -51,6 +51,7 @@ set ruler " ルーラー表示
 
 set showmatch " 閉じ括弧を打つと対応する開き括弧がハイライトされる
 set matchtime=3
+set visualbell t_vb=
 
 highlight SpellBad cterm=bold,undercurl ctermbg=234  " SyntaxErrorの表示スタイルをまいるどにする
 
