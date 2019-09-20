@@ -9,6 +9,7 @@ export TERM=xterm-256color
 # set PATH so it includes user's private bin if it exists
 [ -f "$HOME/.zshpathes" ] && source $HOME/.zshpathes
 [ -d "$HOME/bin" ] && export PATH=$PATH:$HOME/bin
+[ -d "$HOME/.nvm" ] && . $HOME/.nvm/nvm.sh && nvm use default
 eval "$(direnv hook zsh)"
 
 #editor
@@ -54,6 +55,7 @@ alias dkm='docker-machine'
 alias dks='docker-swarm'
 alias dkc='docker-compose'
 alias dkc='docker-compose -f docker-compose-local.yml'
+alias dkt='docker-compose -f docker-compose-test.yml'
 export LESS="FSRX"
 
 #prompt

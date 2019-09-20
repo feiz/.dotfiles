@@ -4,6 +4,6 @@
 .config/nvim/plugin/
 .config/nvim/.netrwhist
 etc/environments
-.netrwhist
+.vim/.netrwhist
 
 *.sw[op]
