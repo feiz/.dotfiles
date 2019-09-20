@@ -1,19 +1,15 @@
-#!/bin/sh
+#!/bin/bash
 WD=`pwd`
 trap 'cd $WD' EXIT
 
+
 # 設置パス
-SETUPPATH=($(cd $(dirname "${0}") && pwd))
+cd `dirname "${0}"`
+SETUPPATH=`pwd`
 . $SETUPPATH/environments
 
 # 除外ファイル
-EXCLUDES=(
-  "\.gitignore"
-  "\.git"
-  "etc"
-  "environments"
-  "README.md"
-)
+EXCLUDES=("\.gitignore" "\.git" "etc" "environments" "README.md")
 # ディレクトリ自体は実体として作成し、1階層奥をリンクにする
 SUBDIRS=(
   "\.config"

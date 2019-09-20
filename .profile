@@ -35,6 +35,3 @@ alias ll="ls -lahF"
 alias findpy='find . -name "*.py" | xargs grep '
 alias findhtml='find . -name "*.html" | xargs grep '
 
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
